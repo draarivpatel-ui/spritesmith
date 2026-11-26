@@ -1,0 +1,23 @@
+{
+  "name": "spritesmith",
+  "version": "1.0.0",
+  "description": "Offline indexed-palette pixel sprite animator and sprite sheet forge",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node scripts/checks.mjs",
+    "serve": "node scripts/serve.mjs",
+    "shots": "node scripts/screenshots.mjs"
+  },
+  "keywords": [
+    "pixel-art",
+    "sprite-sheet",
+    "offline",
+    "indexed-palette",
+    "hackathon"
+  ]
+}

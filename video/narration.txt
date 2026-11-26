@@ -1,0 +1,13 @@
+SpriteSmith is an offline pixel sprite animator and sheet forge. It opens with a real four frame walk cycle, not a mockup.
+
+The editor uses a fixed sixteen slot indexed palette. Slot zero is transparent, and every other color is deliberate, so there is no free color picker hiding the constraint.
+
+Drawing happens on an exact eight, sixteen, or thirty two pixel grid. Onion skin shows the previous and next frames while the timeline plays at the chosen frame rate.
+
+Frames can be duplicated, reordered by selection, repaired with undo, and checked live. The constraint panel explains empty frames, bad palette indexes, fractional origins, and sheet overflow with a recovery hint.
+
+The forge packs the animation into a horizontal strip or a grid using integer pixel math. The sheet preview shows the exact dimensions before anything is exported.
+
+Export creates two machine readable files. One is a true indexed color PNG, and the other is a JSON atlas with frame rectangles and millisecond durations. GIF export is intentionally absent.
+
+SpriteSmith runs with no account, no network service, and no Photoshop integration. Its tests verify the palette, timeline, packing math, atlas shape, PNG bytes, and every chunk checksum.

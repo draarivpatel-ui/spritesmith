@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SpriteSmith is an offline indexed-palette pixel sprite animator and sprite sheet forge.">
+  <meta name="theme-color" content="#101423">
+  <title>SpriteSmith</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand" aria-label="SpriteSmith">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M5 5h6v6H5z" fill="#f04452"/>
+          <path d="M11 11h6v6h-6z" fill="#ffc53d"/>
+          <path d="M17 17h6v6h-6z" fill="#22a06b"/>
+          <path d="M23 23h4v4h-4z" fill="#9ee7ff"/>
+          <path d="M20 4h7v3h-4v4h-3z" fill="#f8fafc"/>
+        </svg>
+        <h1>SpriteSmith</h1>
+      </div>
+      <div class="session-badges" aria-label="Session facts">
+        <span>offline</span>
+        <span>16 indexed slots</span>
+        <span id="grid-badge">16 x 16</span>
+        <span id="painted-badge">0 painted px</span>
+      </div>
+      <div class="top-actions" aria-label="Project actions">
+        <button type="button" id="undo-button" class="utility">Undo</button>
+        <button type="button" id="redo-button" class="utility">Redo</button>
+        <button type="button" id="sample-button" class="utility">Sample walk</button>
+        <button type="button" id="new-button" class="utility danger-quiet">New sprite</button>
+      </div>
+    </header>
+
+    <main class="workbench">
+      <aside class="tool-rail panel" aria-label="Drawing tools and palette">
+        <section class="panel-block">
+          <h2>Tools</h2>
+          <div class="tool-grid">
+            <button type="button" data-tool="pencil" class="tool-button active" aria-pressed="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.2L16.5 4.5l3 3L8.2 18.8 4 20zm3-2l1.8-.5-1.3-1.3L7 18zM17 7l-1.5-1.5L17 4l1.5 1.5L17 7z" fill="currentColor"/></svg>
+              Pencil
+            </button>
+            <button type="button" data-tool="eraser" class="tool-button" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15l8.5-8.5a2 2 0 012.8 0l3.2 3.2a2 2 0 010 2.8L13 18H8l-4-3zm6 3h10v2H10v-2z" fill="currentColor"/></svg>
+              Eraser
+            </button>
+            <button type="button" data-tool="fill" class="tool-button" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h9l-2 5H7L5 4zm2 7h5l2 9H7l-2-9zm10-5c1 1.5 2 2.8 2 4a2 2 0 11-4 0c0-1.2 1-2.5 2-4z" fill="currentColor"/></svg>
+              Fill
+            </button>
+            <button type="button" data-tool="picker" class="tool-button" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 3.3l6 6-9.4 9.4-2.8-2.8 6.2-6.2-1.4-1.4-5.8 5.8-2.8-2.8 9.4-9.4zM4 18a2 2 0 104 0c0-1.1-.9-2-2-2s-2 .9-2 2z" fill="currentColor"/></svg>
+              Picker
+            </button>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <h2>Indexed palette</h2>
+          <div id="palette-grid" class="palette-grid" role="radiogroup" aria-label="Fixed sixteen slot palette"></div>
+          <p class="fine-note">Slot 0 is transparent. There is no free color picker.</p>
+        </section>
+
+        <section class="panel-block">
+          <h2>Grid</h2>
+          <label class="field">
+            <span>Sprite size</span>
+            <div class="inline-control">
+              <select id="grid-size-select">
+                <option value="8">8 x 8</option>
+                <option value="16" selected>16 x 16</option>
+                <option value="32">32 x 32</option>
+              </select>
+              <button type="button" id="apply-grid-button" class="utility">Apply</button>
+            </div>
+          </label>
+          <label class="field range-field">
+            <span>Canvas zoom <output id="zoom-output">100%</output></span>
+            <input id="zoom-input" type="range" min="70" max="120" value="100">
+          </label>
+        </section>
+      </aside>
+
+      <section class="canvas-stage" aria-label="Sprite editor">
+        <div class="stage-toolbar">
+          <div class="frame-heading">
+            <strong id="frame-title">Walk 1</strong>
+            <span id="frame-meta">frame 1 of 4 | 16 x 16px</span>
+          </div>
+          <label class="check-control">
+            <input type="checkbox" id="onion-toggle" checked>
+            Onion skin previous and next
+          </label>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="sprite-canvas" width="512" height="512" aria-label="Pixel drawing canvas"></canvas>
+          <output id="pixel-coordinate" class="pixel-coordinate">outside canvas</output>
+        </div>
+
+        <div class="playback-bar">
+          <button type="button" id="play-button" class="primary small">Play</button>
+          <label class="fps-control">
+            <span>Timeline fps</span>
+            <input id="fps-input" type="range" min="1" max="16" value="8">
+            <output id="fps-output">8 fps</output>
+          </label>
+          <span id="time-readout" class="time-readout">0 ms / 500 ms</span>
+        </div>
+
+        <div class="timeline-panel">
+          <div id="timeline-strip" class="timeline-strip" aria-label="Animation frames"></div>
+          <div class="timeline-actions">
+            <button type="button" id="add-frame-button" class="utility">Add frame</button>
+            <button type="button" id="duplicate-frame-button" class="utility">Duplicate</button>
+            <button type="button" id="delete-frame-button" class="utility danger-quiet">Delete</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="inspector panel" aria-label="Constraints and export">
+        <section class="panel-block constraints-panel">
+          <div class="panel-heading">
+            <h2>Constraint checker</h2>
+            <span id="constraint-count" class="status-pill">clean</span>
+          </div>
+          <ul id="constraint-list" class="constraint-list"></ul>
+        </section>
+
+        <section class="panel-block forge-panel">
+          <h2>Forge sheet</h2>
+          <div class="forge-controls">
+            <label class="field">
+              <span>Layout</span>
+              <select id="layout-select">
+                <option value="horizontal">Horizontal strip</option>
+                <option value="grid">Grid</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Max width px</span>
+              <input id="max-width-input" type="number" min="8" max="4096" step="1" value="128">
+            </label>
+            <label class="field">
+              <span>Padding px</span>
+              <input id="padding-input" type="number" min="0" max="64" step="1" value="0">
+            </label>
+          </div>
+          <button type="button" id="forge-button" class="primary">Forge sheet</button>
+          <div id="sheet-stats" class="sheet-stats">64 x 16px | 4 x 1 cells | 4 frames | padding 0px</div>
+          <canvas id="sheet-preview" width="384" height="180" aria-label="Sprite sheet preview"></canvas>
+          <div class="download-row">
+            <button type="button" id="download-png-button" class="utility" disabled>Download PNG</button>
+            <button type="button" id="download-json-button" class="utility" disabled>Download JSON</button>
+          </div>
+          <p class="fine-note">PNG plus JSON only. GIF export is intentionally not included.</p>
+        </section>
+
+        <section class="panel-block atlas-panel">
+          <h2>Atlas preview</h2>
+          <pre id="atlas-preview" aria-label="JSON atlas preview"></pre>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="statusbar">
+      <span id="save-state">Ready offline</span>
+      <span>No accounts. No network calls. No Photoshop integration.</span>
+    </footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

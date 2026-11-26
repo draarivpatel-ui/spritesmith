@@ -1,0 +1,182 @@
+{
+ "sr": 24000,
+ "total": 72.797,
+ "lead": 0.6,
+ "gap_sent": 0.3,
+ "gap_para": 0.75,
+ "tail": 1.0,
+ "seed": 1,
+ "overall_rms": 0.10102128237485886,
+ "overall_peak": 0.9399999976158142,
+ "words": 197,
+ "sentences": [
+  {
+   "para": 0,
+   "sent": 0,
+   "text": "SpriteSmith is an offline pixel sprite animator and sheet forge.",
+   "dur": 3.562,
+   "words": 10,
+   "rms": 0.1044103279709816,
+   "start": 0.469,
+   "natural_start": 0.6,
+   "natural_dur": 4.56
+  },
+  {
+   "para": 0,
+   "sent": 1,
+   "text": "It opens with a real four frame walk cycle, not a mockup.",
+   "dur": 3.0,
+   "words": 12,
+   "rms": 0.13113147020339966,
+   "start": 4.266,
+   "natural_start": 5.46,
+   "natural_dur": 3.84
+  },
+  {
+   "para": 1,
+   "sent": 0,
+   "text": "The editor uses a fixed sixteen slot indexed palette.",
+   "dur": 2.906,
+   "words": 9,
+   "rms": 0.10349901765584946,
+   "start": 7.852,
+   "natural_start": 10.05,
+   "natural_dur": 3.72
+  },
+  {
+   "para": 1,
+   "sent": 1,
+   "text": "Slot zero is transparent, and every other color is deliberate, so there is no free color picker hiding the constraint.",
+   "dur": 6.438,
+   "words": 20,
+   "rms": 0.11732276529073715,
+   "start": 10.992,
+   "natural_start": 14.07,
+   "natural_dur": 8.24
+  },
+  {
+   "para": 2,
+   "sent": 0,
+   "text": "Drawing happens on an exact eight, sixteen, or thirty two pixel grid.",
+   "dur": 3.719,
+   "words": 12,
+   "rms": 0.10791057348251343,
+   "start": 18.016,
+   "natural_start": 23.06,
+   "natural_dur": 4.76
+  },
+  {
+   "para": 2,
+   "sent": 1,
+   "text": "Onion skin shows the previous and next frames while the timeline plays at the chosen frame rate.",
+   "dur": 5.25,
+   "words": 17,
+   "rms": 0.10635746270418167,
+   "start": 21.969,
+   "natural_start": 28.12,
+   "natural_dur": 6.72
+  },
+  {
+   "para": 3,
+   "sent": 0,
+   "text": "Frames can be duplicated, reordered by selection, repaired with undo, and checked live.",
+   "dur": 4.781,
+   "words": 13,
+   "rms": 0.1280105859041214,
+   "start": 27.805,
+   "natural_start": 35.59,
+   "natural_dur": 6.12
+  },
+  {
+   "para": 3,
+   "sent": 1,
+   "text": "The constraint panel explains empty frames, bad palette indexes, fractional origins, and sheet overflow with a recovery hint.",
+   "dur": 6.969,
+   "words": 18,
+   "rms": 0.10809626430273056,
+   "start": 32.82,
+   "natural_start": 42.01,
+   "natural_dur": 8.92
+  },
+  {
+   "para": 4,
+   "sent": 0,
+   "text": "The forge packs the animation into a horizontal strip or a grid using integer pixel math.",
+   "dur": 4.844,
+   "words": 16,
+   "rms": 0.1158934086561203,
+   "start": 40.375,
+   "natural_start": 51.68,
+   "natural_dur": 6.2
+  },
+  {
+   "para": 4,
+   "sent": 1,
+   "text": "The sheet preview shows the exact dimensions before anything is exported.",
+   "dur": 4.094,
+   "words": 11,
+   "rms": 0.09762303531169891,
+   "start": 45.453,
+   "natural_start": 58.18,
+   "natural_dur": 5.24
+  },
+  {
+   "para": 5,
+   "sent": 0,
+   "text": "Export creates two machine readable files.",
+   "dur": 2.375,
+   "words": 6,
+   "rms": 0.09981592744588852,
+   "start": 50.133,
+   "natural_start": 64.17,
+   "natural_dur": 3.04
+  },
+  {
+   "para": 5,
+   "sent": 1,
+   "text": "One is a true indexed color PNG, and the other is a JSON atlas with frame rectangles and millisecond durations.",
+   "dur": 6.031,
+   "words": 20,
+   "rms": 0.11605525761842728,
+   "start": 52.742,
+   "natural_start": 67.51,
+   "natural_dur": 7.72
+  },
+  {
+   "para": 5,
+   "sent": 2,
+   "text": "GIF export is intentionally absent.",
+   "dur": 1.969,
+   "words": 5,
+   "rms": 0.10785585641860962,
+   "start": 59.008,
+   "natural_start": 75.53,
+   "natural_dur": 2.52
+  },
+  {
+   "para": 6,
+   "sent": 0,
+   "text": "SpriteSmith runs with no account, no network service, and no Photoshop integration.",
+   "dur": 4.625,
+   "words": 12,
+   "rms": 0.11455132812261581,
+   "start": 61.562,
+   "natural_start": 78.8,
+   "natural_dur": 5.92
+  },
+  {
+   "para": 6,
+   "sent": 1,
+   "text": "Its tests verify the palette, timeline, packing math, atlas shape, PNG bytes, and every chunk checksum.",
+   "dur": 5.594,
+   "words": 16,
+   "rms": 0.11629581451416016,
+   "start": 66.422,
+   "natural_start": 85.02,
+   "natural_dur": 7.16
+  }
+ ],
+ "tempo_scale": 1.28,
+ "volume_scale": 0.88,
+ "natural_total": 93.18
+}
