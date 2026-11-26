@@ -829,3 +829,66 @@ h2 {
     min-height: 100vh;
   }
 }
+
+
+@media print {
+  @page { margin: 11mm; }
+  :root {
+    color-scheme: light;
+    --ink:#fff; --ink-deep:#fff; --panel:#fff; --panel-raised:#fff; --panel-soft:#fff; --line:#999; --line-bright:#666; --text:#111; --muted:#444; --quiet:#555;
+  }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  html, body {
+    background: #fff !important;
+    color: #111 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  body::before, body::after { display: none !important; }
+  main, section, article, aside, header, footer, div, form, fieldset, table, thead, tbody, tr, th, td {
+    background-image: none !important;
+    background-color: transparent !important;
+  }
+  h1, h2, h3, h4, p, li, dt, dd, th, td, caption, label, legend, summary, small, strong, span, div, output, code, pre {
+    color: #111 !important;
+  }
+  section, article, aside, fieldset, table, th, td, pre, hr {
+    border-color: #777 !important;
+  }
+  a { color: inherit !important; text-decoration: none !important; }
+  .skip, .skip-link, nav, button, input, select, textarea, .top-actions, .tool-rail, .tool-button, .timeline-controls { display: none !important; }
+  .app-shell, .workbench, .canvas-stage, .inspector, .timeline-panel {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .panel, .canvas-stage, .panel-block, section {
+    background: #fff !important;
+    color: #111 !important;
+    border-color: #777 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .panel, .canvas-stage, .atlas-panel pre, pre, [class*="scroll"] {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+  table { width: 100% !important; border-collapse: collapse !important; font-size: 8.5pt !important; }
+  th, td { white-space: normal !important; overflow-wrap: anywhere !important; }
+  pre, code { white-space: pre-wrap !important; overflow-wrap: anywhere !important; }
+  img, canvas, svg { max-width: 100% !important; height: auto !important; }
+.app-shell { min-height: 0 !important; }
+  .topbar, .statusbar { position: static !important; }
+  .canvas-stage { border: 1pt solid #777 !important; }
+}

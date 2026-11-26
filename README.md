@@ -30,7 +30,7 @@ npm test
 npm run test:browser
 ```
 
-The unit suite has 37 deterministic `node:test` cases with 205 assertion statements. The browser harness adds 21 browser-level checks driven over CDP with real pointer clicks. Coverage includes palette validation, constrained grid sizes, frame pixel math, flood fill behavior, timeline boundary math, undo and redo, malformed project input, horizontal and grid sheet packing, atlas shape, PNG byte length, PNG chunk order, CRC correctness with an independent bit implementation, zlib round trips, constraint violation messages, frame duplication, playback, forge state, and console hygiene.
+The unit suite has 42 deterministic `node:test` cases with 212 assertion statements. The browser harness adds 21 browser-level checks driven over CDP with real pointer clicks. Coverage includes palette validation, constrained grid sizes, frame pixel math, flood fill behavior, timeline boundary math, undo and redo, malformed project input, horizontal and grid sheet packing, atlas shape, PNG byte length, PNG chunk order, CRC correctness with an independent bit implementation, zlib round trips, constraint violation messages, frame duplication, playback, forge state, and console hygiene.
 
 ## The fixed indexed palette
 
